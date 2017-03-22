@@ -20,8 +20,15 @@
   },
   "rules": {
     "key-spacing"          : 0,
-    "jsx-quotes"           : [2, "prefer-single"],
+    "jsx-quotes"           : [0, "prefer-single"],
     "max-len"              : [2, 120, 2],
+    "semi": "off",
+    "no-unused-vars": "warn",
+    "no-trailing-spaces": "warn",
+    "no-multiple-empty-lines": "off",
+    "padded-blocks": "off",
+    "eol-last": "warn",
+    "react/jsx-space-before-closing": 0,
     "object-curly-spacing" : [2, "always"]
   }
 }

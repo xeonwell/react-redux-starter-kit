@@ -2,9 +2,9 @@
  * Created by xeonwell on 2017-03-22.
  */
 
-import PageNotFound from './PageNotFound'
+import PageNotFound from './PageNotFound';
 
 export default {
-  path: '*',
+  path     : '*',
   component: PageNotFound
-}
+};

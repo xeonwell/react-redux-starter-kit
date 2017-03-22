@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser" : "babel-eslint",
   "extends": [
     "standard",
     "standard-react"
@@ -9,26 +9,27 @@
     "react",
     "promise"
   ],
-  "env": {
-    "browser" : true
+  "env"    : {
+    "browser": true
   },
   "globals": {
-    "__DEV__"      : false,
-    "__TEST__"     : false,
-    "__PROD__"     : false,
-    "__COVERAGE__" : false
+    "__DEV__"     : false,
+    "__TEST__"    : false,
+    "__PROD__"    : false,
+    "__COVERAGE__": false
   },
-  "rules": {
-    "key-spacing"          : 0,
-    "jsx-quotes"           : [0, "prefer-single"],
-    "max-len"              : [2, 120, 2],
-    "semi": "off",
-    "no-unused-vars": "warn",
-    "no-trailing-spaces": "warn",
-    "no-multiple-empty-lines": "off",
-    "padded-blocks": "off",
-    "eol-last": "warn",
+  "rules"  : {
+    "key-spacing"                   : 0,
+    "jsx-quotes"                    : [0, "prefer-single"],
+    "max-len"                       : [2, 120, 2],
+    "semi"                          : "off",
+    "no-unused-vars"                : "warn",
+    "no-trailing-spaces"            : "warn",
+    "no-multiple-empty-lines"       : "off",
+    "padded-blocks"                 : "off",
+    "eol-last"                      : "warn",
     "react/jsx-space-before-closing": 0,
-    "object-curly-spacing" : [2, "always"]
+    "react/no-unused-prop-types"    : 1,
+    "object-curly-spacing"          : [0, "always"]
   }
 }

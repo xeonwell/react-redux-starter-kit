@@ -3,15 +3,15 @@
  */
 
 module.exports = function (options) {
-  let path         = require('path');
-  let url          = require('url');
-  let fs           = require('fs');
-  let mockPath     = path.join(__dirname, '../mock');
-  let log          = (options && typeof options.log === 'function') ? options.log : console.log;
-  let successRate  = (options && typeof options.successRate === 'number') ? options.successRate : 1;
-  let isSuccessful = () => (Math.random() < successRate);
-  let successWrap  = (data) => ({status: 1, data: data});
-  let failWrap     = () => ({status: 2, data: 'MockServer random error occurred.'});
+  const path         = require('path');
+  const url          = require('url');
+  const fs           = require('fs');
+  const mockPath     = require('../config/project.config').paths.base('mock');
+  const log          = (options && typeof options.log === 'function') ? options.log : console.log;
+  const successRate  = (options && typeof options.successRate === 'number') ? options.successRate : 1;
+  const isSuccessful = () => (Math.random() < successRate);
+  const successWrap  = (data) => ({status: 1, data: data});
+  const failWrap     = () => ({status: 2, data: 'MockServer random error occurred.'});
 
   log('mock enabled. mock path ->', mockPath);
 

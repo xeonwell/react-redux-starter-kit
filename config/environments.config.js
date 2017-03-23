@@ -19,7 +19,7 @@ module.exports = {
   development: (config) => ({
     compiler_public_path: `http://${config.server_host}:${config.server_port}/`,
     proxyTable:           {
-      '/api':                 Object.assign({pathRewrite: {'^/api': ''}}, proxyOption),
+      '/api': Object.assign({pathRewrite: {'^/api': ''}}, proxyOption),
       // '/Content/':            proxyOption,
       // '/UeditorHandler.ashx': proxyOption
     },

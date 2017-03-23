@@ -1,5 +1,10 @@
 Changelog
 =========
+3.0.0-alpha.3
+-----
+
+### Features
+* add http-proxy-middleware
 
 3.0.0-alpha.0
 -------------

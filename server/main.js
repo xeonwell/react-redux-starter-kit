@@ -12,16 +12,16 @@ const app = express();
 app.use(compress());
 
 // ------------------------------------
-// Apply Webpack HMR Middleware
+// Apply Webpack HMR Middleware, HTTP Proxy, MockServer
 // ------------------------------------
 if (project.env === 'development') {
-  const compiler        = webpack(webpackConfig);
-  const proxyMiddleware = require('http-proxy-middleware');
 
   if (project.mockConfig.enable) {
     app.use(require('./mock-server')(project.mockConfig.options))
   }
+
   // proxy api requests
+  const proxyMiddleware = require('http-proxy-middleware');
   Object.keys(project.proxyTable).forEach(function (context) {
     let options = project.proxyTable[context];
     if (typeof options === 'string') {
@@ -30,6 +30,7 @@ if (project.env === 'development') {
     app.use(proxyMiddleware(context, options));
   });
 
+  const compiler        = webpack(webpackConfig);
   debug('Enabling webpack dev and HMR middleware');
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath : webpackConfig.output.publicPath,

@@ -20,8 +20,8 @@ module.exports = {
     compiler_public_path: `http://${config.server_host}:${config.server_port}/`,
     proxyTable:           {
       '/api':                 Object.assign({pathRewrite: {'^/api': ''}}, proxyOption),
-      '/Content/':            proxyOption,
-      '/UeditorHandler.ashx': proxyOption
+      // '/Content/':            proxyOption,
+      // '/UeditorHandler.ashx': proxyOption
     },
     mockConfig:           {
       enable:  true,

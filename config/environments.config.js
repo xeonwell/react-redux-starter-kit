@@ -6,7 +6,7 @@
 // https://github.com/chimurai/http-proxy-middleware
 const proxyOption = {
   target:       process.env.PROXY_TARGET || 'http://localhost:8910',
-  changeOrigin: true,
+  changeOrigin: true
 };
 
 module.exports = {
@@ -21,15 +21,15 @@ module.exports = {
     proxyTable:           {
       '/api':                 Object.assign({pathRewrite: {'^/api': ''}}, proxyOption),
       '/Content/':            proxyOption,
-      '/UeditorHandler.ashx': proxyOption,
+      '/UeditorHandler.ashx': proxyOption
     },
     mockConfig:           {
       enable:  true,
       options: {
         successRate: 1,
-        log:         require('debug')('app:MockServer'),
-      },
-    },
+        log:         require('debug')('app:MockServer')
+      }
+    }
   }),
 
   // ======================================================
@@ -43,7 +43,7 @@ module.exports = {
     compiler_stats:           {
       chunks:       true,
       chunkModules: true,
-      colors:       true,
-    },
-  }),
+      colors:       true
+    }
+  })
 };

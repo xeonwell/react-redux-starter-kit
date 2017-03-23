@@ -24,7 +24,7 @@ module.exports = {
       // '/UeditorHandler.ashx': proxyOption
     },
     mockConfig:           {
-      enable:  true,
+      enable:  false,
       options: {
         successRate: 1,
         log:         require('debug')('app:MockServer')

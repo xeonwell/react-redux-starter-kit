@@ -16,30 +16,32 @@ app.use(compress());
 // ------------------------------------
 if (project.env === 'development') {
 
-  if (project.mockConfig.enable) {
-    app.use(require('./mock-server')(project.mockConfig.options))
+  if (project.mockConfig && project.mockConfig.enable) {
+    app.use(require('./mock-server')(project.mockConfig.options));
   }
 
   // proxy api requests
-  const proxyMiddleware = require('http-proxy-middleware');
-  Object.keys(project.proxyTable).forEach(function (context) {
-    let options = project.proxyTable[context];
-    if (typeof options === 'string') {
-      options = {target: options};
-    }
-    app.use(proxyMiddleware(context, options));
-  });
+  if (project.proxyTable) {
+    const proxyMiddleware = require('http-proxy-middleware');
+    Object.keys(project.proxyTable).forEach(function (context) {
+      let options = project.proxyTable[context];
+      if (typeof options === 'string') {
+        options = {target: options};
+      }
+      app.use(proxyMiddleware(context, options));
+    });
+  }
 
-  const compiler        = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig);
   debug('Enabling webpack dev and HMR middleware');
   app.use(require('webpack-dev-middleware')(compiler, {
-    publicPath : webpackConfig.output.publicPath,
+    publicPath:  webpackConfig.output.publicPath,
     contentBase: project.paths.client(),
-    hot        : true,
-    quiet      : project.compiler_quiet,
-    noInfo     : project.compiler_quiet,
-    lazy       : false,
-    stats      : project.compiler_stats
+    hot:         true,
+    quiet:       project.compiler_quiet,
+    noInfo:      project.compiler_quiet,
+    lazy:        false,
+    stats:       project.compiler_stats
   }));
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'

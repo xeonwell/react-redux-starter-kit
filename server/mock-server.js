@@ -3,6 +3,8 @@
  */
 
 module.exports = function (options) {
+
+  options            = options || {};
   const path         = require('path');
   const url          = require('url');
   const fs           = require('fs');

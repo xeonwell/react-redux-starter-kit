@@ -7,8 +7,8 @@ module.exports = function (options) {
   const url          = require('url');
   const fs           = require('fs');
   const mockPath     = require('../config/project.config').paths.base('mock');
-  const log          = (options && typeof options.log === 'function') ? options.log : console.log;
-  const successRate  = (options && typeof options.successRate === 'number') ? options.successRate : 1;
+  const log          = typeof options.log === 'function' ? options.log : console.log;
+  const successRate  = typeof options.successRate === 'number' ? options.successRate : 1;
   const isSuccessful = () => (Math.random() < successRate);
   const successWrap  = (data) => ({status: 1, data: data});
   const failWrap     = () => ({status: 2, data: 'MockServer random error occurred.'});
